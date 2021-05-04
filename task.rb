@@ -222,27 +222,24 @@ class UserQ20
     @age = age
   end
 end
-#case user.age
-#
-##{user.name}の入場料金は#{entry_fee}円です
 class Zoo
   # 以下に回答を記載
-  attr_reader :entry_fee
   def initialize(name:, entry_fee:)
     @name = name
     @entry_fee = entry_fee
   end
   def info_entry_fee(user)
-    case user.age 
+    fee = case user.age
     when 0..5
-      puts "#{user.name}さんの入場料金は #{@entry_fee[:infant]} 円です。"
+      @entry_fee[:infant]
     when 6..12
-      puts "#{user.name}さんの入場料金は #{@entry_fee[:children]} 円です。"
+      @entry_fee[:children]
     when 13..64
-      puts "#{user.name}さんの入場料金は #{@entry_fee[:adult]} 円です。"
+      @entry_fee[:adult]
     when 65..120
-      puts "#{user.name}さんの入場料金は #{@entry_fee[:senior]} 円です。"
+      @entry_fee[:senior]
     end
+    puts "#{user.name}さんの入場料金は #{fee} 円です。"
   end
 end
 
